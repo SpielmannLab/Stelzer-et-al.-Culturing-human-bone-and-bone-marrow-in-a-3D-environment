@@ -1,0 +1,11 @@
+# Lane,Sample,Index
+1,test_sample,SI-TT-D9
+*,test_sample,SI-TT-D9
+2-4,test_sample,SI-TT-D9
+
+# For multiple library types
+Lane,Sample,Index
+1,GEX_sample,SI-TT-D9
+1,FB_sample,SI-NT-A1
+1,CMO_sample,SI-NN-A1
+

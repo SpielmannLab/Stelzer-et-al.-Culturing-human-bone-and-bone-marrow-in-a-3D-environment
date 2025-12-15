@@ -1,0 +1,17 @@
+# cellranger install file was downloaded from: https://www.10xgenomics.com/support/software/cell-ranger/downloads
+FROM ubuntu:20.04
+
+# update package manager, build essentials, and install python 3
+RUN apt-get update \
+    && apt-get install --yes curl
+
+# install cellranger (instructions: https://www.10xgenomics.com/support/software/cell-ranger/latest/tutorials/cr-tutorial-in)
+WORKDIR /installdir
+RUN curl -o cellranger-8.0.1.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-8.0.1.tar.gz?Expires=1717626439&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=kUtt3bhOUSTmfAz14hVfwrmX9-UTI3wsqtBDJlSUt5FxQUbFDk4NB3jZ2jBKkcqwgj9Sz2~q6L~JUgx4tQBvp-deuLatesBJPLJ3CmfmBu9EkctBvXMxOKq5f~a~X-CJg~6DD9CpAzqjrU5sfHIpnfbza9r5wjenj1JlBQ4AKpu9OJvvYZNRdODcE0imtwLN8V3BR800jVtMkFS5nr-UVURyeaXnD25mxSZb78ZQdb4jUd8OkBRDsmW-40Pj0VUm-fnezZdU487iSFd5q5aMY3ykYoW9MAZGkMFliNbpJ1uNbJ~5~Z40ku4ZhehkHBIzyJpudiud0tcRHartijH2dg__"
+RUN tar -xzvf cellranger-8.0.1.tar.gz \
+  && rm cellranger-8.0.1.tar.gz
+ENV PATH="/installdir/cellranger-8.0.1:${PATH}"
+
+WORKDIR /work
+LABEL version="8.0.1"
+
