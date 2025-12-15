@@ -1,0 +1,39 @@
+# Samples to be processed. RDS files will be named as "condition-treatment-replicate-batch_10x.RDS"
+samples:
+  # -
+  #   - condition
+  #   - treatment
+  #   - replicate
+  #   - batch
+  #   - nickname
+  #   - /path/to/folder/containing/countmatrix/genes/and/barcodes
+  #   - /path/to/possorted/bam
+  - 
+    - GD17
+    - 
+    - 1
+    - 1
+    - gnd17xyz
+    - /data/humangen_singlecell/Astiz_SCN_development/count_low/GD17/outs/filtered_feature_bc_matrix
+    - /data/humangen_singlecell/Astiz_SCN_development/count_low/GD17/outs/possorted_genome_bam.bam
+  # - 
+  #   - PND2
+  #   - 
+  #   - 1
+  #   - 1
+  #   - pnd2abc
+  #   - /data/humangen_singlecell/Astiz_SCN_development/count_low/PND2/outs/filtered_feature_bc_matrix
+  #   - /data/humangen_singlecell/Astiz_SCN_development/count_low/PND2/outs/possorted_genome_bam.bam
+
+# Choose whether or not to perform velocyto to get spliced/unspliced count matrices
+perform_velocyto: true # true or false
+
+# For velocyto to create loom files. Can be blank if not doing velocyto
+file_repeatMasker: "/data/humangen_mouse/refdata/for_scvelo/mm10_rmsk.gtf"
+file_genesGTF: "/data/humangen_mouse/refdata/refdata-gex-mm10-2020-A/genes/genes.gtf"
+
+# Folder where results should be saved. Need not exist. e.g. /*/*/*/. Needs to end with "/"
+outfolder: "/data/humangen_mouse/test_area/varun/scPreprocess/count_to_seurat_test/"
+
+# Version info
+version: "2023.03.21"
