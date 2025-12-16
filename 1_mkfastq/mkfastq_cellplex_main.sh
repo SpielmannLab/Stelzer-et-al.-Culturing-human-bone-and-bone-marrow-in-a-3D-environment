@@ -13,7 +13,7 @@ path_sampleSheet="/data/humangen_singlecell/Stelzer/Illumina/240430_VH00398_77_2
 # This is the name of the project/sample/run
 id="P045_Stelzer"
 # This is the place where the output will be stored. This should be an existing folder
-path_out="/data/humangen_singlecell/Stelzer/Illumina/240430_VH00398_77_2222LVFNX/fastq"
+path_out="/data/humangen_singlecell/Stelzer/fastq"
 # How many mismatches are allowed in the index reads. Base this on Hamming Distance.
 # Default is 1. Possible are 0,1 or 2. Can also provide comma-separated values for each of the samples, but read bcl2fastq2 documentation if this is needed.
 hamming_dist=1
