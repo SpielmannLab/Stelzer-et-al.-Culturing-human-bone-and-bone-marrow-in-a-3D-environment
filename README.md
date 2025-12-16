@@ -13,7 +13,7 @@ Run **/5_sc_multi_sample/sc_multi_sample_main.sh**   to integrate individual seu
 
 At this stage seurat object meta columns Annotation, Sample Type, and Sample were added using Seurat v4 and standard R packages  
 
-Run **/6_make_plots/make_plots_sbatch.sh**   to perform custom analysis used in this manuscript as well as generate figures presented in the manuscript.
+Run **/6_make_plots/make_plots_sbatch.sh**   to generate figures presented in the manuscript.
 
 [1] Absolute paths are used at certain instances, which will need to be adapted, as needed.  
 [2] Anaconda was used to set up the necessary environments
