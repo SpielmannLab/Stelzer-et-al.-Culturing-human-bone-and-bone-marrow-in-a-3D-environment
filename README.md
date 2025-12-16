@@ -1,4 +1,4 @@
-# Following are the scripts used to analyse the single-cell data, as presented in the manuscript
+# Scripts used to analyse the single-cell data as presented in the manuscript
 
 Run **/1_mkfastq/**```mkfastq_cellplex_main.sh```   to generate fastq files from Illumina sequencer output using bcl2fastq2 v2.20.  
 
