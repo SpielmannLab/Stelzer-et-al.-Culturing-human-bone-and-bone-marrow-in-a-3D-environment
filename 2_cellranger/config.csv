@@ -1,0 +1,16 @@
+# this is a comment,,,,
+[gene-expression],,,,# Section describing configuration of Gene Expression libraries only, unless otherwise specified.
+reference,/data/refdata/refdata-gex-GRCh38-2020-A,,,# Path of folder containing 10x-compatible reference. Required for gene expression and Feature Barcode libraries.
+probe-set,/data/refdata/Chromium_Human_Transcriptome_Probe_Set_v1.0_GRCh38-2020-A.csv,,,# Probe set CSV file, declaring probe constructs and associated barcodes. Required.
+filter-probes,true,,,# Include all non-deprecated probes listed in the probe set reference CSV file. Probes that are predicted to have off-target activity to homologous genes are excluded from analysis by default. Setting filter-probes to false will result in UMI counts from all non-deprecated probes, including those with predicted off-target activity, to be used in the analysis. Probes whose ID is prefixed with DEPRECATED are always excluded from the analysis. Default: true. Optional.
+no-bam,false,,,# Disables BAM(.bai) file generation, saving disk space at the expense of interrogable alignment records. Default: false.
+,,,,
+[libraries],,,,# Table describing the input sequencing libraries. Must contain the header and 1 or more rows. Required.
+fastq_id,fastqs,lanes,feature_types
+P45,/data/humangen_singlecell/Stelzer/fastq,any,Gene Expression,
+,,,,
+[samples],,,,
+sample_id,probe_barcode_ids,description,,
+P2337_BOAC_6w_SC121_PBMC,BC001,,,
+P2337_BOAC_6w_SC130_BMMNC,BC002,,,
+Pat2337_TC1,BC003,,,

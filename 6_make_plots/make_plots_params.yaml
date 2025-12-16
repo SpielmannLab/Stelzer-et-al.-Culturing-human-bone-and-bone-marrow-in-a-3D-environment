@@ -1,0 +1,85 @@
+# Path to the RDS files containg the Seurat objects. Usually, after sc_p_sample or sc_multi_sample pipelines. Need to have UMAP emebddings.
+in_seurat_rds:
+  - "/data/humangen_singlecell/Stelzer/sc_multi_sample/cluster/Geissler_Stelzer_Bone-integrate-harmony_clustering.rds"
+# Folder where results should be saved. Need not exist. e.g. /*/*/*/. Needs to end with "/"
+outfolder: "/data/humangen_singlecell/Stelzer/plots/"
+#####################################
+########## CELL COMPOSITION #########
+#####################################
+# For cell composition for each xvar stratified by groupin_var
+# Note, for composition based on clusters of a particular resolution, use "xvar: RNA_snn_res.0.1" for resolution of 0.1
+plot_cell_composition: true # Whether or not to plot cell composition.
+grouping_var: Sample # Leave empty to get a metadata table. If no grouping desired, provide something. You can discard this plot.
+xvar: Annotation # Leave emtpy to get a metadata table
+correct_grouping_var_imbalance: true # To correct for grouping_var imbalance in cell numbers.
+figure_height: 5 # Height of the output figure. 4 is a good number
+########## CELL EMBEDDING (UMAP, TSNE, OR PCA) #########
+# Generate a new cell embedding figure. The embedding of choice needs to be present in the Seurat object
+plot_cell_embedding: true # Whether or not to create a new cell embedding plot
+cell_embedding_group_by: Annotation # This is to color the cells by
+cell_embedding_color_values: # OPTIONAL. Provide comma-separated values. Eg. "grey,blue,..." or "#808080,#0000FF,..." If empty, uses default colors.
+cell_embedding_split_by:  # This generated multiple panels. Leaving empty just creates one plot
+cell_embedding_pt_size: 1 #Size of points in the UMAP plot. 2 is a good number to start with
+cell_embedding_shuffle_pts: true # Default TRUE. Whether or not to shuffle the points for better visibility. <TRUE|FALSE>
+cell_embedding_width: 10
+cell_embedding_height: 10
+cell_embedding_reduction_to_use: "umap" # Choose "umap", "tsne" or "pca". Need to exist
+cell_embedding_aspect_ratio: 1 # Aspect ratio of the plot. 1 will create a square plot. height/width
+#######################################
+########### GENE EXPRESSION ###########
+#######################################
+# For plotting gene expression
+# Comma separated list of genes. No space in between. Has to match the case.
+# Note: It need not only be genes. It can also be a metadata column containing numerical values. Eg. "nCount_RNA"
+# Genes or features not found in data will be discarded.
+genes: "IL7R,CD3D,BCL11B,IL32,CCL5,NKG7,GZMA,CST7,MZB1,ACSM3,DNTT,IGLL1,EMCN,LDB2,ADGRL4,ANK1,ASPM,UBE2C,DEPDC1B,BIRC5,SLC24A3,HDC,CLC,AVP,CALN1,BANK1,MS4A1,PAX5,FBLN1,IGFBP4,COL1A1,COL1A2,DCN,TOP2A,MKI67,BPI,ATP8B4,MPO,CPE,WIF1,IBSP,S100A13,RUNX2,C1QA,C1QB,SPP1,IRF8,LYZ,FPR1,VCAN,ACP5,CTSK,CALCR,ATP6V0D2,DCSTAMP,NFATC1,ITGB3,OSCAR,MMP9,DERL3,SEC11C,SSR4,ALAS2,SLC4A1" #List of genes to be visualized (comma seperated value)
+# (optional) How to group or split the plots
+group_by: Annotation # applicable only for VlnPlot, Ridgeplot and DotPlot
+split_by:  # applicable UMAP plot (aka FeaturePlot), Ridgeplot and DotPlot
+# Note, for DotPlot, split_by implementation is not the Default Seurat way. Instead it generates multiple side-by-side plots per split_by value.
+
+# Seurat "assay"
+# Seurat object can contain multiple assays ("RNA", "SCT", "integrated") depending on the previous steps.
+# Chose one assay to plot the gene expression from.
+assay: RNA # Note not all genes might be present in "integrated" assay, based on nhvg for Seurat integration.
+# ----------- UMAP PLOT (AKA FEATURE PLOT) ----------- #
+plot_genes_in_umap: false # Whether or not to plot gene expression in umap space.
+umap_genes_per_file: 3 # How many genes to be plotted per file
+umap_pt_size: 2 # Size of points in the FeaturePlot (UMAP plot). 2 is a good number to start with
+umap_cell_order: true # Whether or not to order the plotting based on the expression values. Set to TRUE if dots are being buried.
+umap_height: 10 # Height of the file
+umap_width: 30 # Width of the file
+# ----------- RIDGE PLOT ----------- #
+sort_splits_by: ascending # Optional. <ascending,descending,a_comma_separated_string_of_values_in_split_by_column">
+plot_genes_in_ridgeplot: false # Whether or not to plot gene expression in ridge plot.
+ridge_color_values: "blue,red" # OPTIONAL. "green,#110201,..."
+ridge_bandwidth: 0.1 # This determines the width of the density plot. 0.1 is a good starting point
+ridge_genes_per_file: 2 # How many genes to be plotted per file
+ridge_width: 7 # Width of the file
+ridge_height: 7 # Height of the file
+# ----------- VIOLIN PLOT ----------- #
+plot_genes_in_violinplot: false # Whether or not to plot gene expression in violin plot.
+vln_color_values: "blue,green,red,black" # OPTIONAL. Provide comma-separated values. Eg. "grey,blue,..." or "#808080,#0000FF,..." If empty, uses default colors.
+vln_genes_per_file: 2 # How many genes to be plotted per file
+vln_pt_size: 0.5 # Size of points. 0.5 is a good number to start with
+vln_width: 7 # Width of the file
+vln_height: 7 # Height of the file
+vln_do_statistics: false # whether or not to do statistics. Adds pairwise comparisons.
+# ----------- DOTPLOT ----------- #
+plot_genes_in_dotplot: true # Whether or not to plot gene expression in violin plot.
+dot_width: 17 # Width of the file
+dot_height: 7 # Height of the file
+angle_x_text: 90 # Angle to rotate the xaxis labels by 0..90
+#######################################
+########### GENE versus GENE ##########
+#######################################
+# Plot the expression of one gene vs another gene to see how their expression are related
+plot_gvg: false # Whether or not to make a gene_vs_gene plot
+gvg_assay: RNA # Note not all genes might be present in "integrated" assay, based on nhvg for Seurat integration.
+gvg_gene_pairs: # Multiple comparisons possible. Just provide them as list
+  #- gene1,gene2 #to plot gene1 expression vs gene2 expression
+  - Lmnb1,Zfp608
+gvg_group_by: condition # the cells will be colored using this parameter
+gvg_pt_size: 0.5 # size of the dots representing cells
+gvg_width: 7
+gvg_height: 7

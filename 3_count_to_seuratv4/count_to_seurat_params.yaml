@@ -1,0 +1,47 @@
+# Samples to be processed. RDS files will be named as "condition-treatment-replicate-batch_10x.RDS"
+samples:
+  # -
+  #   - condition
+  #   - treatment
+  #   - replicate
+  #   - batch
+  #   - nickname
+  #   - /path/to/folder/containing/countmatrix/genes/and/barcodes
+  #   - /path/to/possorted/bam
+  - 
+    - scaffold
+    - 
+    - 2
+    - 4
+    - SC121_PBMC
+    - /data/humangen_singlecell/Stelzer/count/P45/outs/per_sample_outs/P2337_BOAC_6w_SC121_PBMC/count/sample_filtered_feature_bc_matrix
+    - 
+  - 
+    - scaffold
+    - 
+    - 1
+    - 3
+    - SC130_BMMNC
+    - /data/humangen_singlecell/Stelzer/count/P45/outs/per_sample_outs/P2337_BOAC_6w_SC130_BMMNC/count/sample_filtered_feature_bc_matrix
+    - 
+  - 
+    - bone_femoral_head
+    - 
+    - 2
+    - 2
+    - TC_1
+    - /data/humangen_singlecell/Stelzer/count/P45/outs/per_sample_outs/Pat2337_TC1/count/sample_filtered_feature_bc_matrix
+    - 
+
+# Choose whether or not to perform velocyto to get spliced/unspliced count matrices
+perform_velocyto: false # true or false
+
+# For velocyto to create loom files. Can be blank if not doing velocyto
+file_repeatMasker: "/data/humangen_mouse/refdata/for_scvelo/hg38_rmsk.gtf"
+file_genesGTF: "/data/humangen_mouse/refdata/refdata-gex-GRCh38-2020-A/genes/genes.gtf"
+
+# Folder where results should be saved. Need not exist. e.g. /*/*/*/. Needs to end with "/"
+outfolder: "/data/humangen_singlecell/Stelzer/count_to_seurat/"
+
+# Version info
+version: "2023.03.21"
