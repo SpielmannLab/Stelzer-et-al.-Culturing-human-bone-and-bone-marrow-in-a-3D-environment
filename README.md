@@ -11,7 +11,7 @@ Run **/4_sc_p_sample/**```sc_p_sample_main.sh```   to perform a standard analysi
 Run **/5_sc_multi_sample/**```sc_multi_sample_main.sh```   to integrate individual seurat objects using harmony. This wrapper calls a Nextflow script sc_multi_sample.nf, which combines the data, performs dimensionality reduction, clustering and DE gene analysis. This is run in the conda environment *scVelocity.yml*.
 
 
-Seurat object meta columns **Annotation, Sample Type, and Sample were added using Seurat v4 and standard R packages**.  
+Seurat object meta columns **Annotation, Sample Type, and Sample were added using Seurat v4 and standard R packages**. Annotation was determined based on and in accordance with marker genes from publicly available sources.  
 
 Run **/6_make_plots/**```make_plots_sbatch.sh```   to generate figures presented in the manuscript.
 
